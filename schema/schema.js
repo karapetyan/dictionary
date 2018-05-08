@@ -54,7 +54,7 @@ let schema = {
             errorId: "XXXX-XXX1-XX412-1231-ASDF",
             text: "error text"
         },
-            {errorId: "AAAA-XXX1-XX412-1231-ASDF",
+        {   errorId: "AAAA-XXX1-XX412-1231-ASDF",
             text: "one more error..."
         }
     ]

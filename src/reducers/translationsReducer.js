@@ -10,10 +10,14 @@ const translations = (state = [], action) => {
             ])
             
         case 'EDIT_TRANSLATION':
-            return [...state].map(item => {
-                if (item.wordId === action.id) item.translation = action.editedTranslation;
-                return item;
-            })
+            return [...state].map(item => 
+                item.wordId === action.id ?
+                    ({
+                        ...item,
+                        translation: action.editedTranslation
+                    }):
+                    item
+            )
 
         case 'DELETE_ENTRY':
             return [...state].filter(item => 
