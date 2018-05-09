@@ -1,24 +1,30 @@
 let schema = {
-    words: [
-        {
-            word: "hello",
-            id: "342S-ASDF-S2342-ASDFA-ASDF"
-        },
-        {
-            word: "bye",
-            id: "722B-ASDF-S2342-ASDFA-ASDF"
-        }
-    ],
-    translations: [
-        {
-            translation: "привет",
-            wordId: "342S-ASDF-S2342-ASDFA-ASDF"
-        },
-        {
-            translation: "пока",
-            wordId: "722B-ASDF-S2342-ASDFA-ASDF"
-        }
-    ],
+    words: {
+        entities: [
+            {
+                word: "hello",
+                id: "342S-ASDF-S2342-ASDFA-ASDF"
+            },
+            {
+                word: "bye",
+                id: "722B-ASDF-S2342-ASDFA-ASDF"
+            }
+        ],
+        editingEntityId: null // possible value: "722B-ASDF-S2342-ASDFA-ASDF"
+    },
+    translations: {
+        entities: [
+            {
+                translation: "привет",
+                wordId: "342S-ASDF-S2342-ASDFA-ASDF"
+            },
+            {
+                translation: "пока",
+                wordId: "722B-ASDF-S2342-ASDFA-ASDF"
+            }
+        ],
+        editingEntityId: null 
+    },
     test: {
         pairs: [
             {
@@ -47,7 +53,7 @@ let schema = {
                 ]
             }
         ],
-        selectedPair: "XXXX-XXX1-XX412-1231-ASDF"
+        selectedPairId: "XXXX-XXX1-XX412-1231-ASDF"
     },
     errors: [
         {

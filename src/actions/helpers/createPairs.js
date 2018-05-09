@@ -1,12 +1,12 @@
 import shuffe from './shuffle';
 
 const getTranslationOptions = id => {
-    let allTranslations = getState().translations;
-    let correctTranslation = allTranslations.filter(tr => 
-        tr.wordId === id
+    let allTranslations = getState().translations.entities;
+    let correctTranslation = allTranslations.filter(entity => 
+        entity.wordId === id
     )
-    let translationOptions = allTranslations.filter(tr => 
-        tr.wordId !== id
+    let translationOptions = allTranslations.filter(entity => 
+        entity.wordId !== id
     )
     incorrectTranslations = shuffle(translationOptions).slice(0, 5);
     validTranslationOptions = shuffle(incorrectTranslations.concat(correctTranslation));
@@ -15,7 +15,7 @@ const getTranslationOptions = id => {
 
 const createPairs = () => {
     let result = [];
-    getState().words.forEach(item => {
+    getState().words.entities.forEach(entity => {
         result.push({
             pairId: v4(),
             status: {
@@ -23,10 +23,10 @@ const createPairs = () => {
                 chosenTranslationId: null
             },
             quizWord: {
-                word: item.word,
-                id: item.id
+                word: entity.word,
+                id: entity.id
             },
-            translations: getTranslationOptions(item.id)
+            translations: getTranslationOptions(entity.id)
         })
     });
     return result;

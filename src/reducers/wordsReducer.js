@@ -1,4 +1,6 @@
-const words = (state = [], aciton) => {
+import { combineReducers } from "redux";
+
+const entities = (state = [], aciton) => {
     switch (aciton.type) {
        case 'ADD_NEW_ENTRY':
             return ([
@@ -9,21 +11,35 @@ const words = (state = [], aciton) => {
                 }
             ])
         case 'EDIT_WORD':
-            return [...state].map(item => 
-                item.id === action.id ?
+            return [...state].map(entity => 
+                entity.id === action.id ?
                     ({
-                        ...item,
+                        ...entity,
                         word: action.editedWord
                     }):
-                    item
+                    entity
             )
-        case 'DELETE_ENTRY':
-            return [...state].filter(item => 
-                item.id !== action.id
+        case 'REMOVE_ENTRY':
+            return [...state].filter(entity => 
+                entity.id !== action.id
             )
         default:
             return state
     }
 }
 
-export default words;
+const editingEntityId = (state = null, action) => {
+    switch (action.type) {
+        case 'EDITING_WORD_ENTITY_ID':
+            return editingEntityId = action.wordId
+        default:
+            return state;
+    }
+}
+
+ let words = combineReducers({
+    entities,
+    editingEntityId
+ })
+
+ export default words;

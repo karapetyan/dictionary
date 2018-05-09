@@ -5,6 +5,7 @@ import getWordById from './helpers/getWordById';
 import canCreateTest from './helpers/canCreateTest';
 import createPairs from './helpers/createPairs';
 import getFirstPairId from './helpers/getFirstPairId';
+import isCorrectAnswer from './helpers/isCorrectAnswer';
 
 export const addNewEntry = (word, translation) => {
     if (!(entryExists(word, translation))) {
@@ -37,9 +38,9 @@ export const editTranslation = (wordId, editedTranslation) => {
     }
 }
 
-export const deleteEntry = id =>
+export const removeEntry = id =>
     ({
-        type: 'DELETE_ENTRY',
+        type: 'REMOVE_ENTRY',
         id
     })
 
@@ -48,7 +49,7 @@ export const createTest = () => {
         return ({
             type: 'CREATE_TEST',
             pairs: createPairs(),
-            selectedPair: getFirstPairId()
+            selectedPairId: getFirstPairId()
         })
 
     }

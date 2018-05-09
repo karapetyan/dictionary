@@ -1,14 +1,14 @@
 const entryExists = (word, translation) => {
-    let sameWordsIds = getState().words
-    .filter(item => 
-        item.word === word
+    let sameWordsIds = getState().words.entities
+    .filter(entity => 
+        entity.word === word
     ).map(i =>
         i.id
     )
                     
-    let alreadyExists = getState().translations
-    .filter(tr => 
-        sameWordsIds.includes(tr.wordId) && tr.translation === translation
+    let alreadyExists = getState().translations.entities
+    .filter(entity => 
+        sameWordsIds.includes(entity.wordId) && entity.translation === translation
     ).length
 
     if (alreadyExists) {

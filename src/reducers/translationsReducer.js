@@ -1,4 +1,6 @@
-const translations = (state = [], action) => {
+import { combineReducers } from 'redux';
+
+const entities = (state = [], action) => {
     switch (action.type) {
         case 'ADD_NEW_ENTRY':
             return ([
@@ -10,23 +12,38 @@ const translations = (state = [], action) => {
             ])
             
         case 'EDIT_TRANSLATION':
-            return [...state].map(item => 
-                item.wordId === action.id ?
+            return [...state].map(entity => 
+                entity.wordId === action.id ?
                     ({
-                        ...item,
+                        ...entity,
                         translation: action.editedTranslation
                     }):
-                    item
+                    entity
             )
 
-        case 'DELETE_ENTRY':
-            return [...state].filter(item => 
-                item.wordId !== action.id
+        case 'REMOVE_ENTRY':
+            return [...state].filter(entity => 
+                entity.wordId !== action.id
             )
 
         default:
             return state         
     }
 }
+
+const editingEntityId = (state = null, action) => {
+    switch (action.type) {
+        case 'EDITING_TRANSLATIONS_ENTITY_ID':
+            return editingEntityId = action.wordId
+
+        default:
+            return state;
+    }
+}
+
+ let translations = combineReducers({
+    entities,
+    editingEntityId
+})
 
 export default translations;
