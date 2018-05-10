@@ -1,4 +1,9 @@
-const test = (state = {}, action) => {
+let initialState = {
+    pairs: [],
+    selectedPair: null
+}
+
+const test = (state = initialState, action) => {
     switch (action.type) {
         case 'CREATE_TEST':
             return ({

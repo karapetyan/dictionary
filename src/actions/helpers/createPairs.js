@@ -1,7 +1,8 @@
+import { store } from '../../store/store';
 import shuffe from './shuffle';
 
 const getTranslationOptions = id => {
-    let allTranslations = getState().translations.entities;
+    let allTranslations = store.getState().dictionary.translations.entities;
     let correctTranslation = allTranslations.filter(entity => 
         entity.wordId === id
     )
@@ -15,7 +16,7 @@ const getTranslationOptions = id => {
 
 const createPairs = () => {
     let result = [];
-    getState().words.entities.forEach(entity => {
+    store.getState().dictionary.words.entities.forEach(entity => {
         result.push({
             pairId: v4(),
             status: {

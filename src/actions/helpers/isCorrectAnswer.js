@@ -1,5 +1,7 @@
+import { store } from '../../store/store';
+
 const isCorrectAnswer = (pairId, wordId) =>
-    getState().test.pairs.filter(pair => 
+    store.getState().test.pairs.filter(pair => 
         pair.pairId === pairId
     )[0].quizWord.id === wordId
 

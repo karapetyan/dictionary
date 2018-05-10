@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux';
-import words from './wordsReducer';
-import translations from './translationsReducer';
+import dictionary from './dictionary/dictionaryReducer';
 import test from './testReducer';
+import errors from './errorsReducer';
 
 export default combineReducers({
-    words,
-    translations,
+    dictionary,
     test,
     errors
 })

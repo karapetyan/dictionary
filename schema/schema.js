@@ -1,29 +1,34 @@
 let schema = {
-    words: {
-        entities: [
-            {
-                word: "hello",
-                id: "342S-ASDF-S2342-ASDFA-ASDF"
-            },
-            {
-                word: "bye",
-                id: "722B-ASDF-S2342-ASDFA-ASDF"
-            }
-        ],
-        editingEntityId: null // possible value: "722B-ASDF-S2342-ASDFA-ASDF"
-    },
-    translations: {
-        entities: [
-            {
-                translation: "привет",
-                wordId: "342S-ASDF-S2342-ASDFA-ASDF"
-            },
-            {
-                translation: "пока",
-                wordId: "722B-ASDF-S2342-ASDFA-ASDF"
-            }
-        ],
-        editingEntityId: null 
+    dictionary: {
+        words: {
+            entities: [
+                {
+                    word: "hello",
+                    id: "342S-ASDF-S2342-ASDFA-ASDF"
+                },
+                {
+                    word: "bye",
+                    id: "722B-ASDF-S2342-ASDFA-ASDF"
+                }
+            ],
+            editingEntityId: null, // possible value: "722B-ASDF-S2342-ASDFA-ASDF"
+            editIconIndex: null
+        },
+        translations: {
+            entities: [
+                {
+                    translation: "привет",
+                    wordId: "342S-ASDF-S2342-ASDFA-ASDF"
+                },
+                {
+                    translation: "пока",
+                    wordId: "722B-ASDF-S2342-ASDFA-ASDF"
+                }
+            ],
+            editingEntityId: null,
+            editIconIndex: null
+        },
+        removeIconEntityIndex: null
     },
     test: {
         pairs: [
@@ -53,7 +58,7 @@ let schema = {
                 ]
             }
         ],
-        selectedPairId: "XXXX-XXX1-XX412-1231-ASDF"
+        selectedPair: "XXXX-XXX1-XX412-1231-ASDF"
     },
     errors: [
         {

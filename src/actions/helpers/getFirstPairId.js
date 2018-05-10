@@ -1,4 +1,6 @@
+import { store } from '../../store/store';
+
 const getFirstPairId = () =>
-    getState().test.pairs[0]
+    store.getState().test.pairs[0]
 
 export default getFirstPairId;

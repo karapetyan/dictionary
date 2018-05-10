@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
+import Dictionary from './components/Dictionary/Dictionary';
+import Test from './components/Test/Test';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+ const App = showTest =>
+    showTest ?
+      <Test/> :
+        <Dictionary /> 
+    
+      
+const mapStateToProps = state =>
+    ({
+      showTest: Boolean(state.test.pairs.length)
+    })
 
-export default App;
+export default connect(
+  mapStateToProps,
+  null
+)(App);

@@ -18,6 +18,13 @@ export const addNewEntry = (word, translation) => {
     }
 }
 
+export const setEditingEntityId = (id, entityType) => {
+    ({
+        type: `SET_EDITING_${entityType}_ID`,
+        id
+    })
+}
+
 export const editWord = (id, editedWord) => {
     if (!(entryExists(editedWord, getTranslationById(id)))) {
         return ({
@@ -38,10 +45,10 @@ export const editTranslation = (wordId, editedTranslation) => {
     }
 }
 
-export const removeEntry = id =>
+export const removeEntry = index =>
     ({
         type: 'REMOVE_ENTRY',
-        id
+        index
     })
 
 export const createTest = () => {
@@ -51,28 +58,18 @@ export const createTest = () => {
             pairs: createPairs(),
             selectedPairId: getFirstPairId()
         })
-
     }
 }
     
 export const checkPair = (pairId, wordId) => 
-    isCorrectAnswer(pairId, wordId) ?
-        ({
-            type: 'CHECK_PAIR',
-            pairId,
-            status: {
-                result: 'succeed',
-                chosenTranslationId: wordId
-            }
-        }) :
-            ({
-                type: 'CHECK_PAIR',
-                pairId,
-                status: {
-                    result: 'failed',
-                    chosenTranslationId: wordId
-                }
-            })
+    ({
+        type: 'CHECK_PAIR',
+        pairId,
+        status: {
+            result: isCorrectAnswer(pairId, wordId) ? 'succeed' : 'failed',
+            chosenTranslationId: wordId
+        }
+    })
 
 export const selectPair = pairId =>
     ({
@@ -92,4 +89,26 @@ export const removeError = errorId =>
     ({
         type: 'REMOVE_ERROR',
         errorId
+    })
+
+export const showEditIcon = (index, type) => 
+    ({
+        type: `SHOW_${type}_EDIT_ICON`,
+        index
+    })
+
+export const hideEditIcon = type => 
+    ({
+        type: `HIDE_${type}_EDIT_ICON`
+    })
+
+export const showRemoveIcon = index =>
+    ({
+        type: 'SHOW_REMOVE_ICON',
+        index
+    })
+
+export const hideRemoveIcon = () =>
+    ({
+        type: 'HIDE_REMOVE_ICON',
     })

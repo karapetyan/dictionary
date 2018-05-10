@@ -1,5 +1,7 @@
+import { store } from '../../store/store';
+
 const getWordById = id =>
-    getState().words.entities.filter(entity =>
+    store.getState().dictionary.words.entities.filter(entity =>
         entity.id === id
     )[0].word
 
