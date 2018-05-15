@@ -29,7 +29,7 @@ const translations = (state = initialState, action) => {
             return ({
                 ...state,
                 entities: state.entities.map(entity => 
-                    entity.wordId === action.id ?
+                    entity.wordId === action.wordId ?
                         ({
                             ...entity,
                             translation: action.editedTranslation

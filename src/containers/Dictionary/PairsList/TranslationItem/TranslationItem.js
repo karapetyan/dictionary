@@ -11,7 +11,7 @@ const mapDispatchToProps = dispatch =>
     ({
         showEditIcon: (index, type) => dispatch(showEditIcon(index, type)),
         hideEditIcon: type => dispatch(hideEditIcon(type)),
-        editTranslation: (wordId, editedTranslation) => dispatch(editTranslation((wordId, editedTranslation)))
+        editTranslation: (wordId, editedTranslation) => dispatch(editTranslation(wordId, editedTranslation))
     })
 
 export default connect(
