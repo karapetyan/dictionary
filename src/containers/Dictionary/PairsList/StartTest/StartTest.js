@@ -4,12 +4,12 @@ import StartTest from '../../../../components/Dictionary/PairsList/StartTest/Sta
 
 const mapStateToProps = state =>
     ({
-        wordsCount: state.dictionary.words.length
+        wordsCount: state.dictionary.words.entities.length
     })
-    
+
 const mapDispatchToProps = dispatch =>
     ({
-        createTest: dispatch(createTest)
+        createTest: () => dispatch(createTest())
     })
 
 export default connect(

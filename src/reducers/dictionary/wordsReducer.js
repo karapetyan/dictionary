@@ -1,12 +1,12 @@
 const initialState = {
     entities: [],
     editingEntityId: null,
-    editIconId: null,
+    editIconIndex: null,
     removeIconId: null
 }
 
-const words = (state = initialState, aciton) => {
-    switch (aciton.type) {
+const words = (state = initialState, action) => {
+    switch (action.type) {
        case 'ADD_NEW_ENTRY':
             return ({
                 ...state,
@@ -42,10 +42,9 @@ const words = (state = initialState, aciton) => {
         case 'REMOVE_ENTRY':
             return ({
                 ...state,
-                editingEntityId: state.editingEntityId === state.entities[action.index].id ?
-                    null : 
-                        state.editingEntityId,
-                entities: [...state].entities.splice(action.index, 1)
+                entities: state.entities.filter((entity, index) => 
+                    index !== action.index
+                )
             })
 
         case 'SHOW_WORD_EDIT_ICON': 

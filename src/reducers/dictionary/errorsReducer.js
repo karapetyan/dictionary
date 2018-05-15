@@ -21,3 +21,5 @@ const errors = (state = [], action) => {
     }
         
 }
+
+export default errors;

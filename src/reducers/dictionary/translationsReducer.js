@@ -1,7 +1,7 @@
 const initialState = {
     entities: [],
     editingEntityId: null,
-    editIconId: null,
+    editIconIndex: null,
     removeIconId: null
 }
 
@@ -42,10 +42,9 @@ const translations = (state = initialState, action) => {
         case 'REMOVE_ENTRY':
             return ({
                 ...state,
-                editingEntityId: state.editingEntityId === state.entities[action.index].wordId ?
-                    null : 
-                        state.editingEntityId,
-                entities: [...state].entities.splice(action.index, 1)
+                entities: state.entities.filter((entity, index) => 
+                    index !== action.index
+                )
             })
 
         case 'SHOW_TRANSLATION_EDIT_ICON': 

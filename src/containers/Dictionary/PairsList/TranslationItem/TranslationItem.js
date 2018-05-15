@@ -9,9 +9,9 @@ const mapStateToProps = state =>
 
 const mapDispatchToProps = dispatch =>
     ({
-        showEditIcon: dispatch(showEditIcon),
-        hideEditIcon: dispatch(hideEditIcon),
-        editTranslation: dispatch(editTranslation)
+        showEditIcon: (index, type) => dispatch(showEditIcon(index, type)),
+        hideEditIcon: type => dispatch(hideEditIcon(type)),
+        editTranslation: (wordId, editedTranslation) => dispatch(editTranslation((wordId, editedTranslation)))
     })
 
 export default connect(

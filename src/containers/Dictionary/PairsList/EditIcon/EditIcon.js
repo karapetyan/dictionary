@@ -4,12 +4,13 @@ import EditIcon from '../../../../components/Dictionary/PairsList/EditIcon/EditI
 
 const mapStateToProps = state =>
     ({
-        editIconIndex: state.dictionary.editIconIndex
+        wordEditIconIndex: state.dictionary.words.editIconIndex,
+        translationEditIconIndex: state.dictionary.translations.editIconIndex
     })
-
+    
 const mapDispatchToProps = dispatch =>
     ({
-        setEditingEntityId: dispatch(setEditingEntityId)
+        setEditingEntityId: (id, entityType) => dispatch(setEditingEntityId(id ,entityType))
     })
 
 export default connect(

@@ -1,3 +1,4 @@
+import React from 'react';
 import Error from '../../containers/Dictionary/Error/Error';
 import AddWord from '../../containers/Dictionary/AddWord/AddWord';
 import PairsList from '../../containers/Dictionary/PairsList/PairsList';

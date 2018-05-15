@@ -15,7 +15,7 @@ const test = (state = initialState, action) => {
             return ({
                 ...state,
                 pairs: state.pairs.map(pair =>
-                    pairId === action.pairId ?
+                    pair.pairId === action.pairId ?
                         ({
                             ...pair,
                             status: action.status
@@ -27,7 +27,7 @@ const test = (state = initialState, action) => {
         case 'SELECT_PAIR':
             return ({
                 ...state,
-                selectedPair: aciton.pairId
+                selectedPair: action.pairId
             })
 
         default: 

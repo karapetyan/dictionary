@@ -1,5 +1,6 @@
 import { store } from '../../store/store';
-import shuffe from './shuffle';
+import shuffle from './shuffle';
+import { v4 } from 'uuid';
 
 const getTranslationOptions = id => {
     let allTranslations = store.getState().dictionary.translations.entities;
@@ -9,8 +10,8 @@ const getTranslationOptions = id => {
     let translationOptions = allTranslations.filter(entity => 
         entity.wordId !== id
     )
-    incorrectTranslations = shuffle(translationOptions).slice(0, 5);
-    validTranslationOptions = shuffle(incorrectTranslations.concat(correctTranslation));
+    let incorrectTranslations = shuffle(translationOptions).slice(0, 5);
+    let validTranslationOptions = shuffle(incorrectTranslations.concat(correctTranslation));
     return validTranslationOptions;
 }
 

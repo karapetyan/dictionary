@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import RemoveIcon from '../../../../components/Dictionary/PairsList/RemoveIcon/RemoveIcon';
+import { removeEntry } from '../../../../actions/index';
 
 const mapStateToProps = state =>
     ({
@@ -8,7 +9,7 @@ const mapStateToProps = state =>
 
 const mapDispatchToProps = dispatch =>
     ({
-        removeEntry: dispatch(removeEntry);
+        removeEntry: index => dispatch(removeEntry(index))
     })
 
 export default connect(

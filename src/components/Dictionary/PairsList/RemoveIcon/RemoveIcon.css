@@ -1,6 +1,9 @@
 .remove-icon {
+    background-image: url('./img/error.svg');
     display: inline-block;
-    width: 20px;
-    height: 20px;
-    background: #F00;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    margin-left: 5px;
+    cursor: pointer;
 }

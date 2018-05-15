@@ -9,7 +9,7 @@ const mapStateToProps = state =>
 
 const mapDispatchToProps = dispatch =>
     ({
-        removeError: dispatch(removeError)
+        removeError: (errorId) => dispatch(removeError(errorId))
     })
 
 export default connect(

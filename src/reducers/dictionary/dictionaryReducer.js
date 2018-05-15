@@ -4,11 +4,9 @@ import translations from './translationsReducer';
 import removeIconEntityIndex from './removeIconEntityIndexReducer';
 
 let dictionary = combineReducers({
-    dictionary: {
-        words,
-        translations,
-        removeIconEntityIndex
-    }
+    words,
+    translations,
+    removeIconEntityIndex
 })
 
 export default dictionary;

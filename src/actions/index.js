@@ -6,6 +6,7 @@ import canCreateTest from './helpers/canCreateTest';
 import createPairs from './helpers/createPairs';
 import getFirstPairId from './helpers/getFirstPairId';
 import isCorrectAnswer from './helpers/isCorrectAnswer';
+import makeConsistent from './helpers/makeConsistent';
 
 export const addNewEntry = (word, translation) => {
     if (!(entryExists(word, translation))) {
@@ -19,7 +20,7 @@ export const addNewEntry = (word, translation) => {
 }
 
 export const setEditingEntityId = (id, entityType) => {
-    ({
+    return ({
         type: `SET_EDITING_${entityType}_ID`,
         id
     })
@@ -45,11 +46,13 @@ export const editTranslation = (wordId, editedTranslation) => {
     }
 }
 
-export const removeEntry = index =>
-    ({
+export const removeEntry = index => {
+    makeConsistent(index);
+    return ({
         type: 'REMOVE_ENTRY',
         index
     })
+}
 
 export const createTest = () => {
     if (canCreateTest()) {
@@ -108,7 +111,7 @@ export const showRemoveIcon = index =>
         index
     })
 
-export const hideRemoveIcon = () =>
+export const hideRemoveIcon = () => 
     ({
         type: 'HIDE_REMOVE_ICON',
     })

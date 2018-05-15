@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import WordItem from '../../../../components/Dictionary/PairsList/WordItem/WordItem';
 import { showEditIcon, hideEditIcon, editWord } from '../../../../actions/index';
+import WordItem from '../../../../components/Dictionary/PairsList/WordItem/WordItem';
 
 const mapStateToProps = state =>
     ({
@@ -9,9 +9,9 @@ const mapStateToProps = state =>
 
 const mapDispatchToProps = dispatch =>
     ({
-        showEditIcon: dispatch(showEditIcon),
-        hideEditIcon: dispatch(hideEditIcon),
-        editWord: dispatch(editWord)
+        showEditIcon: (index, type) => dispatch(showEditIcon(index, type)),
+        hideEditIcon: type => dispatch(hideEditIcon(type)),
+        editWord: (id, editedWord) => dispatch(editWord(id, editedWord))
     })
 
 export default connect(

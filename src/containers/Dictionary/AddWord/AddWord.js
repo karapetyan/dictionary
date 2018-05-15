@@ -4,9 +4,8 @@ import AddWord from '../../../components/Dictionary/AddWord/AddWord';
 
 const mapDispatchToProps = dispatch =>
     ({
-        addNewEntry: dispatch(addNewEntry)
+        addNewEntry: (word, translation) => dispatch(addNewEntry(word, translation))
     })
-
 
 export default connect(
     null,
