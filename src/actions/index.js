@@ -1,3 +1,4 @@
+import { store } from '../store/store';
 import { v4 } from 'uuid';
 import entryExists from './helpers/entryExists';
 import getTranslationById from './helpers/getTranslationById';
@@ -8,16 +9,15 @@ import getFirstPairId from './helpers/getFirstPairId';
 import isCorrectAnswer from './helpers/isCorrectAnswer';
 import makeConsistent from './helpers/makeConsistent';
 
-export const addNewEntry = (word, translation) => {
-    if (!(entryExists(word, translation))) {
-        return ({
-            type: 'ADD_NEW_ENTRY',
-            id: v4(),
-            word,
-            translation
-        })
-    }
-}
+export const addNewEntry = (word, translation) => 
+    entryExists(word, translation) ?
+        store.dispatch(addError(`Запись: ${word} - ${translation} уже есть в словаре`)) :
+            ({
+                type: 'ADD_NEW_ENTRY',
+                id: v4(),
+                word,
+                translation
+            })
 
 export const setEditingEntityId = (id, entityType) => {
     return ({
@@ -80,14 +80,16 @@ export const selectPair = pairId =>
         pairId
     })
     
-
-export const addError = text =>
-    ({
+export const addError = text =>  {
+    console.log('called AddError action:');
+    return ({
         type: 'ADD_ERROR',
         errorId: v4(),
         text
     })
+}
     
+
 export const removeError = errorId =>
     ({
         type: 'REMOVE_ERROR',

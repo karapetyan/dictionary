@@ -1,12 +1,15 @@
+.inline-block {
+    display: inline-block;
+}
+
 .header-error {
     background: #F00;
 }
 
 .close-error {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    right: 10px;
-    top: 10px;
-    background-image: url(./img/error.svg);
+    vertical-align: middle;
+    background-image: url('./img/error.svg');
+    width: 16px;
+    height: 16px;
+    
 }
