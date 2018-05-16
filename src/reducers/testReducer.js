@@ -11,6 +11,11 @@ const test = (state = initialState, action) => {
                 selectedPair: action.selectedPair
             })
 
+        case 'REMOVE_TEST':
+            return ({
+                ...initialState
+            })
+
         case 'CHECK_PAIR':
             return ({
                 ...state,

@@ -1,0 +1,27 @@
+.column-wordlist {
+    float: left;
+    width: 250px;
+}
+
+.word-item {
+    height: 40px;
+    border: 1px solid black;
+    padding-top: 20px;
+    background: url('./img/menu-icon.svg') no-repeat 90% 50% / 20px 20px;
+}
+
+.selected {
+   background: url('./img/menu-selected.svg') no-repeat 90% 50% / 20px 20px;
+}
+
+.succeed {
+    background-color: green;
+}
+
+.failed {
+    background-color: red;
+}
+
+.pointer {
+    cursor: pointer;
+}

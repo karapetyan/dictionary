@@ -3,7 +3,6 @@ import { v4 } from 'uuid';
 import entryExists from './helpers/entryExists';
 import getTranslationById from './helpers/getTranslationById';
 import getWordById from './helpers/getWordById';
-import canCreateTest from './helpers/canCreateTest';
 import createPairs from './helpers/createPairs';
 import getFirstPairId from './helpers/getFirstPairId';
 import isCorrectAnswer from './helpers/isCorrectAnswer';
@@ -55,14 +54,19 @@ export const removeEntry = index => {
 }
 
 export const createTest = () => {
-    if (canCreateTest()) {
-        return ({
-            type: 'CREATE_TEST',
-            pairs: createPairs(),
-            selectedPairId: getFirstPairId()
-        })
-    }
+    let pairs = createPairs();
+    return({
+        type: 'CREATE_TEST',
+        pairs,
+        selectedPair: getFirstPairId(pairs)
+    })
 }
+
+export const removeTest = () => 
+    ({
+        type: 'REMOVE_TEST'
+    })
+
     
 export const checkPair = (pairId, wordId) => 
     ({
@@ -89,7 +93,6 @@ export const addError = text =>  {
     })
 }
     
-
 export const removeError = errorId =>
     ({
         type: 'REMOVE_ERROR',

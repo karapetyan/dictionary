@@ -1,6 +1,4 @@
-import { store } from '../../store/store';
-
-const getFirstPairId = () =>
-    store.getState().test.pairs[0]
+const getFirstPairId = pairs =>
+    pairs[0].pairId
 
 export default getFirstPairId;
