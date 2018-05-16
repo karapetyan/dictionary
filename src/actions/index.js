@@ -54,6 +54,8 @@ export const removeEntry = index => {
 }
 
 export const createTest = () => {
+    store.dispatch(setEditingEntityId(null, 'WORD'));
+    store.dispatch(setEditingEntityId(null, 'TRANSLATION'));
     let pairs = createPairs();
     return({
         type: 'CREATE_TEST',
