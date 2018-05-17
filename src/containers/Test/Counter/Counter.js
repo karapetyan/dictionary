@@ -5,7 +5,7 @@ import Counter from '../../../components/Test/Counter/Counter';
 const mapStateToProps = state => {
     let quizzLeft = state.test.pairs.length - state.test.pairs.filter(pair => pair.status.result).length;
     let corectAnwers = state.test.pairs.filter(pair =>
-        pair.status.result == 'succeed'
+        pair.status.result === 'succeed'
     ).length
     return ({
         quizzLeft,

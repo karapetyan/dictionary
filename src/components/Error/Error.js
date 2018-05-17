@@ -4,7 +4,7 @@ import './Error.css';
 const Error = ({errors, removeError}) =>
     <div>
         {errors.map(error =>
-            <div className="header-error " key={error.errorId}>
+            <div key={error.errorId} className="header-error">
                 <p className="inline-block">{error.text}</p>
                 <div className="close-error inline-block" onClick={() => removeError(error.errorId)}></div>
             </div>

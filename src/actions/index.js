@@ -8,6 +8,7 @@ import getFirstPairId from './helpers/getFirstPairId';
 import isCorrectAnswer from './helpers/isCorrectAnswer';
 import makeConsistent from './helpers/makeConsistent';
 
+/*
 export const addNewEntry = (word, translation) => 
     entryExists(word, translation) ?
         store.dispatch(addError(`Запись: ${word} - ${translation} уже есть в словаре`)) :
@@ -18,12 +19,28 @@ export const addNewEntry = (word, translation) =>
                 translation
             })
 
-export const setEditingEntityId = (id, entityType) => {
-    return ({
+*/
+
+export const addNewEntry = (word, translation) => {
+    console.log('adding new entry');
+    if (entryExists(word, translation)) {
+        store.dispatch(addError(`Запись: ${word} - ${translation} уже есть в словаре`));
+    } else {
+        return ({
+            type: 'ADD_NEW_ENTRY',
+            id: v4(),
+            word,
+            translation
+        })
+    }       
+}
+
+export const setEditingEntityId = (id, entityType) =>
+    ({
         type: `SET_EDITING_${entityType}_ID`,
         id
     })
-}
+
 
 export const editWord = (id, editedWord) => {
     if (!(entryExists(editedWord, getTranslationById(id)))) {
@@ -101,11 +118,25 @@ export const removeError = errorId =>
         errorId
     })
 
+    /*
 export const showEditIcon = (index, type) => 
     ({
         type: `SHOW_${type}_EDIT_ICON`,
         index
     })
+
+*/
+
+export const showEditIcon = (index, type) => {
+    console.log('showEditIcon: ' + index + ' '+ type);
+    return ({
+        type: `SHOW_${type}_EDIT_ICON`,
+        index
+    })
+}
+    
+
+
 
 export const hideEditIcon = type => 
     ({

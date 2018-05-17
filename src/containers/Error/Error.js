@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import Error from '../../../components/Dictionary/Error/Error';
-import { removeError } from '../../../actions/index';
+import Error from '../../components/Error/Error';
+import { removeError } from '../../actions/index';
 
 const mapStateToProps = state =>
     ({

@@ -7,16 +7,14 @@ const errors = (state = [], action) => {
                 {
                     errorId: action.errorId,
                     text: action.text
-                }  
+                }
             ])
-        
         case 'REMOVE_ERROR':
-            return (
+            return(
                 state.filter(e =>
                     e.errorId !== action.errorId  
                 )
             )
-
         default:
             return state
     }

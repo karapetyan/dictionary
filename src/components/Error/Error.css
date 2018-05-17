@@ -11,5 +11,5 @@
     background-image: url('./img/error.svg');
     width: 16px;
     height: 16px;
-    
+    cursor: pointer;
 }
