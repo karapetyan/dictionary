@@ -1,7 +1,7 @@
 import React from 'react';
 
 const StartTest = ({wordsCount, createTest}) =>
-    wordsCount < 2 ? // 20!
+    wordsCount < 20 ?
     <div>
         <button type="button" disabled>Начать тест</button>
         <p>Для тестирования в словаре должно быть не менее 20 слов.</p>
@@ -9,7 +9,5 @@ const StartTest = ({wordsCount, createTest}) =>
         <div>
             <button type="button" onClick={() => createTest()}>Начать тест</button>
         </div>
-
-    
 
 export default StartTest;

@@ -1,6 +1,6 @@
 .column-answers {
-    float: left;
-    padding-left: 50px;
+    position: fixed;
+    margin-left: 270px;
 }
 
 .answer-option {

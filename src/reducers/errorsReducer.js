@@ -1,7 +1,6 @@
 const errors = (state = [], action) => {
     switch (action.type) {
         case 'ADD_ERROR':
-            console.log('called addError Reducer!');
             return([
                 ...state,        
                 {

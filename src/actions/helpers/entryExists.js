@@ -1,4 +1,5 @@
 import { store } from '../../store/store';
+import { addError } from '../../actions/index';
 
 const entryExists = (word, translation) => {
     let sameWordsIds = store.getState().dictionary.words.entities
@@ -11,9 +12,11 @@ const entryExists = (word, translation) => {
     let alreadyExists = store.getState().dictionary.translations.entities
         .filter(entity => 
             sameWordsIds.includes(entity.wordId) && entity.translation === translation
-        ).length
+        )
 
-    return Boolean(alreadyExists);
+    return (alreadyExists[0]) ?
+        alreadyExists[0].wordId :
+            null
 }
 
 export default entryExists;

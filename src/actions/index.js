@@ -7,40 +7,28 @@ import createPairs from './helpers/createPairs';
 import getFirstPairId from './helpers/getFirstPairId';
 import isCorrectAnswer from './helpers/isCorrectAnswer';
 import makeConsistent from './helpers/makeConsistent';
-
-/*
-export const addNewEntry = (word, translation) => 
-    entryExists(word, translation) ?
-        store.dispatch(addError(`Запись: ${word} - ${translation} уже есть в словаре`)) :
-            ({
-                type: 'ADD_NEW_ENTRY',
-                id: v4(),
-                word,
-                translation
-            })
-
-*/
+import nothing from './helpers/nothing';
 
 export const addNewEntry = (word, translation) => {
-    console.log('adding new entry');
-    if (entryExists(word, translation)) {
-        store.dispatch(addError(`Запись: ${word} - ${translation} уже есть в словаре`));
-    } else {
+    if (!entryExists(word, translation)) {
         return ({
             type: 'ADD_NEW_ENTRY',
             id: v4(),
             word,
             translation
         })
-    }       
+    } else {
+        store.dispatch(addError(`Запись: ${word} - ${translation} уже есть в словаре`));
+        return nothing();
+    }
 }
+    
 
 export const setEditingEntityId = (id, entityType) =>
     ({
         type: `SET_EDITING_${entityType}_ID`,
         id
     })
-
 
 export const editWord = (id, editedWord) => {
     if (!(entryExists(editedWord, getTranslationById(id)))) {
@@ -49,9 +37,17 @@ export const editWord = (id, editedWord) => {
             id,
             editedWord  
         })
-    } 
+    } else {
+        if (entryExists(editedWord, getTranslationById(id)) === id) {
+            store.dispatch(setEditingEntityId(null, 'WORD'));
+            return nothing();
+        } else {
+            store.dispatch(addError(`Запись: ${editedWord} - ${getTranslationById(id)} уже есть в словаре`));
+            return nothing();
+        }   
+    }
 }
-    
+
 export const editTranslation = (wordId, editedTranslation) => {
     if (!(entryExists(getWordById(wordId), editedTranslation))) {
         return ({
@@ -59,8 +55,17 @@ export const editTranslation = (wordId, editedTranslation) => {
             wordId,
             editedTranslation
         })
+    } else {
+        if (entryExists(getWordById(wordId), editedTranslation) === wordId) {
+            store.dispatch(setEditingEntityId(null, 'TRANSLATION'));
+            return nothing();
+        } else {
+            store.dispatch(addError(`Запись: ${getWordById(wordId)} - ${editedTranslation} уже есть в словаре`));
+            return nothing();
+        }
     }
 }
+    
 
 export const removeEntry = index => {
     makeConsistent(index);
@@ -103,14 +108,12 @@ export const selectPair = pairId =>
         pairId
     })
     
-export const addError = text =>  {
-    console.log('called AddError action:');
-    return ({
+export const addError = text =>  
+    ({
         type: 'ADD_ERROR',
         errorId: v4(),
         text
     })
-}
     
 export const removeError = errorId =>
     ({
@@ -118,25 +121,12 @@ export const removeError = errorId =>
         errorId
     })
 
-    /*
+
 export const showEditIcon = (index, type) => 
     ({
         type: `SHOW_${type}_EDIT_ICON`,
         index
     })
-
-*/
-
-export const showEditIcon = (index, type) => {
-    console.log('showEditIcon: ' + index + ' '+ type);
-    return ({
-        type: `SHOW_${type}_EDIT_ICON`,
-        index
-    })
-}
-    
-
-
 
 export const hideEditIcon = type => 
     ({
